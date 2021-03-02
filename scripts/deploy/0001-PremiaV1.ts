@@ -11,7 +11,7 @@ import { parseEther } from 'ethers/lib/utils';
 import { ZERO_ADDRESS } from '../../test/utils/constants';
 
 async function main() {
-  const isTestnet = true;
+  const isTestnet = false;
   const [deployer] = await ethers.getSigners();
 
   let dai: string;

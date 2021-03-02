@@ -23,7 +23,7 @@ task('accounts', 'Prints the list of accounts', async (args, hre) => {
 const ETH_TEST_KEY = process.env.ETH_TEST_PKEY;
 const ALCHEMY_KEY = process.env.ALCHEMY_KEY;
 const ETHERSCAN_KEY = process.env.ETHERSCAN_KEY;
-const ETH_MAIN_KEY = fs.readFileSync('./.secret').toString();
+// const ETH_MAIN_KEY = fs.readFileSync('./.secret').toString();
 
 export default {
   solidity: {
@@ -69,27 +69,30 @@ export default {
     },
   },
   networks: {
+    localhost: {
+      url: "http://localhost:8545"
+    },
     hardhat: {
       allowUnlimitedContractSize: true,
       blockGasLimit: 120000000000,
     },
 
-    mainnet: {
-      url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_KEY}`,
-      accounts: [ETH_MAIN_KEY],
-      //gas: 120000000000,
-      // blockGasLimit: 120000000000,
-      gasPrice: 600000000000,
-      timeout: 1000000,
-    },
-    rinkeby: {
-      url: `https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_KEY}`,
-      accounts: [ETH_TEST_KEY],
-      //gas: 120000000000,
-      blockGasLimit: 120000000000,
-      //gasPrice: 10,
-      timeout: 300000,
-    },
+    // mainnet: {
+    //   url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_KEY}`,
+    //   accounts: [ETH_MAIN_KEY],
+    //   //gas: 120000000000,
+    //   // blockGasLimit: 120000000000,
+    //   gasPrice: 600000000000,
+    //   timeout: 1000000,
+    // },
+    // rinkeby: {
+    //   url: `https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_KEY}`,
+    //   accounts: [ETH_TEST_KEY],
+    //   //gas: 120000000000,
+    //   blockGasLimit: 120000000000,
+    //   //gasPrice: 10,
+    //   timeout: 300000,
+    // },
   },
   ...(ETHERSCAN_KEY
     ? {
