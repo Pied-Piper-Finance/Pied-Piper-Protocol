@@ -5,6 +5,3 @@ EXPOSE 8545
 EXPOSE 80
 COPY . .
 RUN yarn install
-RUN npm install pm2 -g
-CMD ["chmod", "+x", "./start.sh"]
-RUN sh start.sh
